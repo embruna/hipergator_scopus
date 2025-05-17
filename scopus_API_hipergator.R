@@ -3,9 +3,15 @@ install.packages("tidyverse")
 library(rscopus)
 library(tidyverse)
 
+dir.create(file.path(mainDir, subDir), showWarnings = FALSE)
+dir.create("papers/", recursive=TRUE)
+dir.create("affils/", recursive=TRUE)
+dir.create("authors/", recursive=TRUE)
+
+
 
   search_term<-c('60017252')
-    
+  
     
     yr1=2019
     yr2=2025
@@ -53,15 +59,15 @@ library(tidyverse)
         scopus_papers <- scopus_data_raw$df
         
         term_for_file<-paste("scopus_affil_",search_term[h],"_",date_range[j],sep="")
-        papers <- paste("./data_raw/scopus_api/papers/",term_for_file,"_papers", ".csv", sep = "")
+        papers <- paste("./papers/",term_for_file,"_papers", ".csv", sep = "")
         write_csv(scopus_papers, papers)
         
         scopus_affiliations <- scopus_data_raw$affiliation
-        affils <- paste("./data_raw/scopus_api/affils/",term_for_file,"_affils_", ".csv", sep = "")
+        affils <- paste("./affils/",term_for_file,"_affils_", ".csv", sep = "")
         write_csv(scopus_affiliations, affils)
         
         scopus_authors <- scopus_data_raw$author
-        authors <- paste("./data_raw/scopus_api/authors/",term_for_file,"_authors", ".csv",sep = "")
+        authors <- paste("./authors/",term_for_file,"_authors", ".csv",sep = "")
         write_csv(scopus_authors, authors)
         }
     }

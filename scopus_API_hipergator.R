@@ -3,10 +3,18 @@ install.packages("tidyverse")
 library(rscopus)
 library(tidyverse)
 
-dir.create(file.path(mainDir, subDir), showWarnings = FALSE)
 dir.create("papers/", recursive=TRUE)
 dir.create("affils/", recursive=TRUE)
 dir.create("authors/", recursive=TRUE)
+
+# ood.rc.ufl.edu 
+# 1 core, 15 GB 
+# enter 3 cluster partition
+# gpu generic resource request
+# gpu:a100:1
+
+# The clone repository from github to hipergator 
+# click on git (3rd down on left)
 
 
 
